@@ -7,7 +7,7 @@ const App = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const fetchUser = async () => {
-    console.log("fetching .....");
+    // console.log("fetching .....");
     try {
       const res = await fetch("https://reqres.in/api/users", {
         headers: {
@@ -21,7 +21,10 @@ const App = () => {
       console.error(err.message);
     }
   };
-  console.log(data);
+  // console.log(data);
+  // if (isLoading) {
+  //   return <p>No data found</p>;
+  // }
 
   return (
     <div>
@@ -42,11 +45,15 @@ const App = () => {
           </tr>
         </thead>
         <tbody>
-          {isLoading && <p>No data found.</p>}
+          {isLoading && (
+            <tr>
+              <td>No data found</td>
+            </tr>
+          )}
           {data &&
             data.map((info) => {
               return (
-                <tr>
+                <tr key={info.id}>
                   <td>{info.first_name}</td>
                   <td>{info.last_name}</td>
                   <td>{info.email}</td>
