@@ -42,7 +42,7 @@ const App = () => {
           </tr>
         </thead>
         <tbody>
-          {isLoading && <p>No data found to display.</p>}
+          {isLoading && <p>No data found.</p>}
           {data &&
             data.map((info) => {
               return (
